@@ -2,7 +2,7 @@
 Getting data from GenBank and Bold for further analyses
 
 #usage
-The file getting_combining_data.R[https://github.com/RonaldVisser/Species_GenBankBold/blob/main/getting_combining_data.R] is used to get data from GenBank and Bold on basis os the trnL marker
+The file getting_combining_data.R{https://github.com/RonaldVisser/Species_GenBankBold/blob/main/getting_combining_data.R} is used to get data from GenBank and Bold on basis os the trnL marker
 
 
 # data
