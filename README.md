@@ -2,7 +2,7 @@
 Getting data from GenBank and Bold for further analyses
 
 # Usage
-The file [getting_combining_data.R](https://github.com/RonaldVisser/Species_GenBankBold/blob/main/getting_combining_data.R) is used to get data from GenBank and Bold on basis os the trnL marker
+The file [getting_combining_data.R](https://github.com/RonaldVisser/Species_GenBankBold/blob/main/getting_combining_data.R) is used to get data from GenBank and Bold on basis os the trnL marker. The species list of plants (see data) is used to select only plant DNA.
 
 
 # Data
