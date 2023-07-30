@@ -1,5 +1,6 @@
 ### Downloading and combining data from NCBI Genbank and BOLD
-### https://fkeck.github.io/refdb/articles/ncbi_bold.html
+### Author: Ronald Visser / Liam Oskam
+###
 # data management libraries
 library(readxl)
 library(stringr)
@@ -19,6 +20,9 @@ soortenlijst_nl$genus <- word(soortenlijst_nl$`Wetenschappelijke naam`,1)
 soortenlijst_nl$species <- str_replace(soortenlijst_nl$`Wetenschappelijke naam`, paste0(soortenlijst_nl$genus, " "), "")
 
 #trnL_ncbi <- refdb_import_NCBI("trnL voucher") # results in much data -> slow download
+
+# Getting data from NCBI --------------------------------------------------
+
 sink("log/ncbi_results.log", append=TRUE, split=TRUE)
 for (i in 1:nrow(soortenlijst_nl)) {
      message(paste0("Finding data for ", soortenlijst_nl$`Wetenschappelijke naam`[i]))
@@ -36,12 +40,15 @@ sink()
 
 trnL_ncbi1 <- trnL_ncbi # first round: 10499 observations (no log)
 rm(trnL_ncbi)
+# run lines 26-39 again
 trnL_ncbi2 <- trnL_ncbi # second round 9045 observations
 file.rename("log/ncbi_results.log", "log/ncbi_results_2.log")
 rm(trnL_ncbi)
+# run lines 26-39 again
 trnL_ncbi3 <- trnL_ncbi # third round 6766 observations, with HTTP error
 file.rename("log/ncbi_results.log", "log/ncbi_results_3.log")
 rm(trnL_ncbi)
+# run lines 26-39 again
 trnL_ncbi4 <- trnL_ncbi # fourth round 10499 observations (same as first round)
 file.rename("log/ncbi_results.log", "log/ncbi_results_4.log")
 rm(trnL_ncbi)
@@ -54,11 +61,14 @@ trnL_ncbi <- trnL_ncbi %>%
      filter(species %in% soortenlijst_nl$`Wetenschappelijke naam`)
 
 
+
+# Reading data from BOLD --------------------------------------------------
+
 # read data from bold using refdb-package (slow)
 for (i in 1:nrow(soortenlijst_nl)) {
      message(paste0("Finding data for ", soortenlijst_nl$`Wetenschappelijke naam`[i]))
      soorten_bold_temp <- refdb_import_BOLD(taxon=soortenlijst_nl$`Wetenschappelijke naam`[i])
-     if (!is.null(nrow(trnL_bold_temp))) {
+     if (!is.null(nrow(soorten_bold_temp))) {
           if (exists("soorten_bold")) {
                soorten_bold <- rbind(soorten_bold, soorten_bold_temp)
           } else {
@@ -80,19 +90,18 @@ nl_soorten_bold <- soortenlijst_nl %>%
      inner_join(bold_records, by = c("Wetenschappelijke naam" = "identification"))
 
 
+
+# Merging BOLD and NCBI ------------------------------------------------
+
 trnL_bold_ncbi <- refdb_merge(trnL_bold, trnL_ncbi)
 
 
 
+# Exporting data ----------------------------------------------------------
 
-# check from here [!!!]
-test <- read.GenBank("14716574")
-
-# export to nexus
 
 write.nexus.data(trnL_bold_ncbi, file="export/trnl_data.nexus",
                  format="protein")
 write.dna(trnL_bold_ncbi, "export/trnl_data.dna")
 write.csv(trnL_bold_ncbi, "export/trnl_data.csv", row.names = FALSE)
-# check from here
-refdb_export_dada2
+
