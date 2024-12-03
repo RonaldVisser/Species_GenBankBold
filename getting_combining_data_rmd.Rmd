@@ -1,0 +1,170 @@
+---
+title: "getting_combining_data"
+author: "L. Oskam"
+date: "29-6-2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#IGNORE THIS FOR NOW#
+Sys.setenv(PATH = paste("C:/Rtools43/bin", Sys.getenv("PATH"), sep=";"))
+Sys.setenv(BINPREF = "C:/Rtools43/mingw$(WIN)/bin/")
+install.packages("https://cran.r-project.org/src/contrib/rlang_1.1.1.tar.gz",
+                 repos=NULL)
+```
+
+```{r}
+install.packages('readxl')
+install.packages('stringr')
+install.packages('dplyr')
+install.packages('refdb')
+install.packages('ape')
+install.packages('bold')
+install.packages('seqinr')
+install.packages('rentrez')
+```
+
+```{r}
+library(readxl)
+library(stringr)
+```
+```{r}
+#DO NOT RUN#
+remove.packages("rlang")
+remove.packages("lifecycle")
+```
+```{r}
+#DO NOT RUN#
+install.packages("rlang")
+```
+```{r}
+#DO NOT RUN#
+install.packages("lifecycle")
+```
+
+```{r}
+library(dplyr)
+```
+```{r}
+library(refdb)
+library(ape)
+library(bold)
+library(seqinr)
+library(rentrez)
+```
+
+```{r}
+soortenlijst_nl <- read_xlsx("data/SL2020 Checklist Flora NL.xlsx", sheet = 2)
+```
+
+```{r}
+soortenlijst_nl$genus <- word(soortenlijst_nl$`Wetenschappelijke naam`,1)
+soortenlijst_nl$species <- str_replace(soortenlijst_nl$`Wetenschappelijke naam`, paste0(soortenlijst_nl$genus, " "), "")
+```
+
+```{r}
+sink("log/ncbi_results.log", append=TRUE, split=TRUE)
+for (i in 1:nrow(soortenlijst_nl)) {
+     message(paste0("Finding data for ", soortenlijst_nl$`Wetenschappelijke naam`[i]))
+     trnL_ncbi_temp <- refdb_import_NCBI(paste0("trnL voucher ", soortenlijst_nl$`Wetenschappelijke naam`[i]))
+     if (!is.null(nrow(trnL_ncbi_temp))) {
+          if (exists("trnL_ncbi")) {
+               trnL_ncbi <- rbind(trnL_ncbi, trnL_ncbi_temp)
+               } else {
+                    trnL_ncbi <- trnL_ncbi_temp
+               }
+     }
+     Sys.sleep(2) # to prevent errors (?)
+}
+sink()
+```
+
+```{r}
+trnL_ncbi1 <- trnL_ncbi # first round: 10499 observations (no log)
+rm(trnL_ncbi)
+```
+
+```{r}
+trnL_ncbi2 <- trnL_ncbi # second round 9045 observations
+file.rename("log/ncbi_results.log", "log/ncbi_results_2.log")
+rm(trnL_ncbi)
+```
+
+```{r}
+trnL_ncbi3 <- trnL_ncbi # third round 6766 observations, with HTTP error
+file.rename("log/ncbi_results.log", "log/ncbi_results_3.log")
+rm(trnL_ncbi)
+```
+
+```{r}
+trnL_ncbi4 <- trnL_ncbi # fourth round 10499 observations (same as first round)
+file.rename("log/ncbi_results.log", "log/ncbi_results_4.log")
+rm(trnL_ncbi)
+```
+
+```{r}
+trnL_ncbi5 <- trnL_ncbi # fifth round 10605 observations
+file.rename("log/ncbi_results.log", "log/ncbi_results_5.log")
+rm(trnL_ncbi)
+```
+
+```{r}
+# to make sure all data is there, the data is combined and then filtered for unique records
+trnL_ncbi <- rbind(trnL_ncbi5)
+trnL_ncbi <- unique(trnL_ncbi)
+# filter data on trnL gene and on species in soortenlijst
+trnL_ncbi <- trnL_ncbi %>%
+     filter(gene=="trnL") %>%
+     filter(species %in% soortenlijst_nl$`Wetenschappelijke naam`)
+for (i in 1:nrow(soortenlijst_nl)) {
+     message(paste0("Finding data for ", soortenlijst_nl$`Wetenschappelijke naam`[i]))
+     soorten_bold_temp <- refdb_import_BOLD(taxon=soortenlijst_nl$`Wetenschappelijke naam`[i])
+     if (!is.null(nrow(soorten_bold_temp))) {
+          if (exists("soorten_bold")) {
+               soorten_bold <- rbind(soorten_bold, soorten_bold_temp)
+          } else {
+               soorten_bold <- soorten_bold_temp
+          }
+     }
+}
+```
+
+```{r}
+trnL_bold <- soorten_bold %>%
+     filter(markercode == "trnL") %>%
+     filter(species %in% soortenlijst_nl$`Wetenschappelijke naam`) %>%
+     distinct()
+```
+
+```{r}
+bold_records <- bold_seq(marker = "trnL")
+```
+
+```{r}
+nl_soorten_bold <- soortenlijst_nl %>%
+     select(soortnummer,`Wetenschappelijke naam`,`Nederlandse naam`, Familie, genus, species) %>%
+     inner_join(bold_records, by = c("Wetenschappelijke naam" = "identification"))
+```
+
+```{r}
+trnL_bold_ncbi <- refdb_merge(trnL_bold, trnL_ncbi)
+```
+
+```{r}
+test <- read.GenBank("14716574")
+```
+
+```{r}
+write.nexus.data(trnL_bold_ncbi, file="export/trnl_data.nexus",
+                 format="protein")
+write.dna(trnL_bold_ncbi, "export/trnl_data.dna")
+write.csv(trnL_bold_ncbi, "export/trnl_data.csv", row.names = FALSE)
+```
+
+```{r}
+refdb_export_dada2
+```
