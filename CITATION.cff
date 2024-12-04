@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
@@ -6,20 +5,7 @@ authors:
     given-names: Ronald
     orcid: "https://orcid.org/0000-0001-6966-1729"
 title: "Combining data from GenBank and Bold"
-version: 0.2.0
+version: 0.3.0
 doi: xxx
-date-released: 2023-07-30
+date-released: 2024-12-04
 url: "https://github.com/RonaldVisser/Species_GenBankBold"
-=======
-cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-authors:
-  - family-names: Visser
-    given-names: Ronald
-    orcid: "https://orcid.org/0000-0001-6966-1729"
-title: "Combining data from GenBank and Bold"
-version: 0.2.0
-doi: xxx
-date-released: 2023-07-30
-url: "https://github.com/RonaldVisser/Species_GenBankBold"
->>>>>>> 35b03930a2fe1381f3c3f3c7bc19332f787b9f68
