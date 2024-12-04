@@ -1,0 +1,191 @@
+Downloading 2 sequences from NCBI...
+[1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                    [1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                     > 2 (100%) sequences downloaded.[1mindexing[0m [34mrefdb_NCBI_2d4c18795791.csv[0m [==========================================================] [32m321.80MB/s[0m, eta: [36m 0s[0m                                                                                                                                                         No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+No sequence found
+Downloading 48 sequences from NCBI...
+[1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                    [1mwrote[0m [32m9.09kB[0m in [36m 0s[0m, [32m829.10MB/s[0m                                                                                                                    [1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                     > 48 (100%) sequences downloaded.[1mindexing[0m [34mrefdb_NCBI_2d4c498932f7.csv[0m [============================================================] [32m2.15GB/s[0m, eta: [36m 0s[0m                                                                                                                                                         # A tibble: 48 × 21
+   source id       gene  sequence       superkingdom kingdom phylum subphylum class subclass infraclass order suborder
+   <chr>  <chr>    <chr> <DNA>          <chr>        <chr>   <chr>  <chr>     <chr> <chr>    <chr>      <chr> <chr>   
+ 1 NCBI   OR573758 <NA>  CCCTCTATCCCCA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 2 NCBI   OR031833 <NA>  CGAAATTATAGAA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 3 NCBI   MG709428 trnL  CGAAATCGGTAGA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 4 NCBI   MG709416 trnL  CGAAATCGGTAGA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 5 NCBI   MN702620 <NA>  AGAAACCCTGGAA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 6 NCBI   OQ383279 <NA>  TTTTATTCCCTAA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 7 NCBI   OQ383278 trnL  CTTGATTGTATTG… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 8 NCBI   OQ383277 trnL  CTTGATTGTATTG… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 9 NCBI   MK187163 <NA>  CCTCACGACTTAT… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+10 NCBI   MK187164 <NA>  CCTCACGACTTAT… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+# ℹ 38 more rows
+# ℹ 8 more variables: infraorder <chr>, superfamily <chr>, family <chr>, genus <chr>, species <chr>,
+#   country_location <lgl>, latitude <dbl>, longitude <dbl>
+# ℹ Use `print(n = ...)` to see more rows
+Entrez search result with 48 hits (object contains 20 IDs and a web_history object)
+ Search term (as translated):  ("Panicum"[Organism] OR Panicum[All Fields]) AND t ... 
+Downloading 48 sequences from NCBI...
+[1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                    [1mwrote[0m [32m9.09kB[0m in [36m 0s[0m, [32m829.10MB/s[0m                                                                                                                    [1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                     > 48 (100%) sequences downloaded.[1mindexing[0m [34mrefdb_NCBI_2d4c6f7e3c7d.csv[0m [============================================================] [32m2.15GB/s[0m, eta: [36m 0s[0m                                                                                                                                                         # A tibble: 48 × 21
+   source id       gene  sequence       superkingdom kingdom phylum subphylum class subclass infraclass order suborder
+   <chr>  <chr>    <chr> <DNA>          <chr>        <chr>   <chr>  <chr>     <chr> <chr>    <chr>      <chr> <chr>   
+ 1 NCBI   OR573758 <NA>  CCCTCTATCCCCA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 2 NCBI   OR031833 <NA>  CGAAATTATAGAA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 3 NCBI   MG709428 trnL  CGAAATCGGTAGA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 4 NCBI   MG709416 trnL  CGAAATCGGTAGA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 5 NCBI   MN702620 <NA>  AGAAACCCTGGAA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 6 NCBI   OQ383279 <NA>  TTTTATTCCCTAA… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 7 NCBI   OQ383278 trnL  CTTGATTGTATTG… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 8 NCBI   OQ383277 trnL  CTTGATTGTATTG… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+ 9 NCBI   MK187163 <NA>  CCTCACGACTTAT… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+10 NCBI   MK187164 <NA>  CCTCACGACTTAT… Eukaryota    Viridi… Strep… Streptop… Magn… Petrosa… <NA>       Poal… <NA>    
+# ℹ 38 more rows
+# ℹ 8 more variables: infraorder <chr>, superfamily <chr>, family <chr>, genus <chr>, species <chr>,
+#   country_location <lgl>, latitude <dbl>, longitude <dbl>
+# ℹ Use `print(n = ...)` to see more rows
+Downloading 48 sequences from NCBI...
+[1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                    [1mwrote[0m [32m9.09kB[0m in [36m 0s[0m, [32m762.78MB/s[0m                                                                                                                    [1mwrote[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                                                     > 48 (100%) sequences downloaded.[1mindexing[0m [34mrefdb_NCBI_2d4c4e994bc.csv[0m [=============================================================] [32m2.15GB/s[0m, eta: [36m 0s[0m                                                                                                                                                         
